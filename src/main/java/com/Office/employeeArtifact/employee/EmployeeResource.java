@@ -6,17 +6,32 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
+@RestController
 public class EmployeeResource {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @GetMapping("/employees")
+    public List<Employee> retrieveAllStudents() {
+        Employee e1 = new Employee();
+        e1.setId(1L);
+        e1.setName("Deepak d2");
+        e1.setPassportNumber("asodfawef");
+        employeeRepository.save(e1);
+
+        return employeeRepository.findAll();
+    }
+
     @GetMapping("/employees/{id}")
     public Employee retrieveEmployee(@PathVariable long id) {
+
         Optional<Employee> employee = employeeRepository.findById(id);
 
         if (!employee.isPresent())
+
             throw new EmployeeNotFoundException("id-" + id);
 
         return employee.get();

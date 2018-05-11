@@ -1,15 +1,15 @@
 package com.Office.employeeArtifact.employee;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue
     private Long id;
     private String name;
+    @Column(name = "passportnumber")
     private String passportNumber;
 
     public Employee() {

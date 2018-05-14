@@ -15,7 +15,7 @@ public class EmployeeResource {
     private EmployeeRepository employeeRepository;
 
     @GetMapping("/employees")
-    public List<Employee> retrieveAllStudents() {
+    public List<Employee> retrieveAllEmployees() {
         Employee e1 = new Employee();
         e1.setId(1L);
         e1.setName("Deepak d2");
